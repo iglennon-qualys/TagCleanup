@@ -34,7 +34,8 @@ def get_tags(user: str, password: str, base_url: str):
             }
         }
     }
-    response = requests.request("POST", request_url, auth=auth, headers=headers, data=json.dumps(payload))
+    response = requests.request("POST", request_url, auth=auth, headers=headers, data=json.dumps(payload),
+                                verify=False)
     if response.status_code == 200:
         return response['ServiceResponse']['data']
     else:
@@ -84,7 +85,8 @@ def delete_tags(tags: list, output_filename: str, user: str, password: str, pod_
             }
         }
         request_url = f'{pod_url}/qps/rest/2.0/delete/am/tag'
-        response = requests.request("POST", request_url, auth=auth, headers=headers, data=json.dumps(payload))
+        response = requests.request("POST", request_url, auth=auth, headers=headers, data=json.dumps(payload),
+                                    verify=False)
         if response.status_code == 200:
             print("Operation completed successfully")
             return
