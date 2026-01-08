@@ -40,7 +40,7 @@ def get_tags(user: str, password: str, base_url: str):
         return response['ServiceResponse']['data']
     else:
         print('ERROR: Could not get tags')
-        printf(f'request URL: {request_url}')
+        print(f'request URL: {request_url}')
         print(f'response code: {response.status_code}')
         print(f'response text: {response.text}')
         return []
