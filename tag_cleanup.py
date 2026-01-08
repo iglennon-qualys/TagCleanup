@@ -37,7 +37,8 @@ def get_tags(user: str, password: str, base_url: str):
     response = requests.request("POST", request_url, auth=auth, headers=headers, data=json.dumps(payload),
                                 verify=False)
     if response.status_code == 200:
-        return response['ServiceResponse']['data']
+        response_json = response.json()
+        return response_json['ServiceResponse']['data']
     else:
         print('ERROR: Could not get tags')
         print(f'request URL: {request_url}')
@@ -57,7 +58,7 @@ def save_tags(tags: dict, output_filename: str):
     return
 
 def load_tags(input_filename: str):
-    with open(input_filename, 'r') as f:
+    with open(f'{input_filename}.json', 'r') as f:
         tags = json.load(f)
     return tags
 
@@ -69,7 +70,7 @@ def delete_tags(tags: list, output_filename: str, user: str, password: str, pod_
         # Build list of Tag IDs
         tag_ids = []
         for tag in tags:
-            tag_ids.append(tag['Tag']['id'])
+            tag_ids.append(str(tag['Tag']['id']))
 
         # build a payload containing the tag IDs, and a filter to use it
         payload = {
@@ -79,7 +80,7 @@ def delete_tags(tags: list, output_filename: str, user: str, password: str, pod_
                         {
                             "field": "id",
                             "operator": "IN",
-                            "values": ','.join(tag_ids)
+                            "value": ','.join(tag_ids)
                         }
                     ]
                 }
