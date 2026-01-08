@@ -2,19 +2,19 @@ import argparse
 import requests
 import json
 
-pods = {'US01': 'qualysapi.qualys.com',
-        'US02': 'qualysapi.qg2.apps.qualys.com',
-        'US03': 'qualysapi.qualys.com',
-        'US04': 'qualysapi.qualys.com',
-        'EU01': 'qualysapi.qualys.eu',
-        'EU02': 'qualysapi.qualys.eu',
-        'EU03': 'qualysapi.qualys.eu',
-        'UK01': 'qualysapi.qg1.apps.qualys.com',
-        'IN01': 'qualysapi.qg1.apps.qualys.in',
-        'CA01': 'qualysapi.qg1.apps.qualys.ca',
-        'AE01': 'qualysapi.qg1.apps.qualys.ae',
-        'AU01': 'qualysapi.qg1.apps.qualys.au',
-        'KSA1': 'qualysapi.qg1.apps.qualysksa.com',
+pods = {'US01': 'https://qualysapi.qualys.com',
+        'US02': 'https://qualysapi.qg2.apps.qualys.com',
+        'US03': 'https://qualysapi.qualys.com',
+        'US04': 'https://qualysapi.qualys.com',
+        'EU01': 'https://qualysapi.qualys.eu',
+        'EU02': 'https://qualysapi.qualys.eu',
+        'EU03': 'https://qualysapi.qualys.eu',
+        'UK01': 'https://qualysapi.qg1.apps.qualys.com',
+        'IN01': 'https://qualysapi.qg1.apps.qualys.in',
+        'CA01': 'https://qualysapi.qg1.apps.qualys.ca',
+        'AE01': 'https://qualysapi.qg1.apps.qualys.ae',
+        'AU01': 'https://qualysapi.qg1.apps.qualys.au',
+        'KSA1': 'https://qualysapi.qg1.apps.qualysksa.com',
         'PRIVATE': ''}
 
 def get_tags(user: str, password: str, base_url: str):
