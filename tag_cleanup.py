@@ -23,6 +23,9 @@ def get_tags(user: str, password: str, base_url: str):
     request_url = f'{base_url}/qps/rest/2.0/search/am/tag'
     payload = {
         "ServiceRequest": {
+            "preferences": {
+                "limitResults": 1000
+            },
             "filters": {
                 "Criteria": [
                     {
